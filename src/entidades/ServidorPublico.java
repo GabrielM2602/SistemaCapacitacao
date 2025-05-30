@@ -17,6 +17,22 @@ public class ServidorPublico {
     private String email;
     private double horasExtras;
 
+
+    public ServidorPublico(){}
+
+    public ServidorPublico(int matricula, String nome){
+        this.matricula = matricula;
+        this.nome = nome;
+    }
+
+    public ServidorPublico(int matricula, String nome, String cargo){
+        this.matricula = matricula;
+        this.nome = nome;
+        this.cargo = cargo;
+    }
+
+
+
     public double getHorasExtras() {
         return horasExtras;
     }
@@ -151,7 +167,7 @@ public class ServidorPublico {
             soma +=  numero;
         }
 
-        System.out.println("A soma dos argumentos informaados "+ soma);
+        System.out.println("\n"+"A soma dos argumentos informados: "+soma);
         return soma;
     }
 }
