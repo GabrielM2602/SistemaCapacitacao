@@ -36,7 +36,7 @@ public class Programa {
         System.out.println("Produto selecionado: ");
         int escolha = 0;
 
-        while (escolha == 0){
+        while (escolha != 4){
             System.out.println("Nome -> 1"+"\n"+ "Preco -> 2"+"\n" + "Quantidade -> 3"+"\n" + "Finalizar -> 4"+"\n");
             System.out.println("Escolha: ");
             escolha = leia.nextInt();
