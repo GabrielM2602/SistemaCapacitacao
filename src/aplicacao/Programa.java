@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Programa {
     public static void main(String[] args) {
+        Scanner leia = new Scanner(System.in);
+        int escolha = 0, ad, sub;
 //        ServidorPublico isabela = new ServidorPublico();
 //        isabela.setNome("Isabela");
 //        isabela.setCargo("Auditor");
@@ -31,20 +33,46 @@ public class Programa {
 
         Produto compra = new Produto();
 
-        Scanner leia = new Scanner(System.in);
-
-        System.out.println("Produto selecionado: ");
-        int escolha = 0;
-
-        while (escolha != 4){
-            System.out.println("Nome -> 1"+"\n"+ "Preco -> 2"+"\n" + "Quantidade -> 3"+"\n" + "Finalizar -> 4"+"\n");
-            System.out.println("Escolha: ");
+        System.out.println("\nColoque os dados do produto: \n");
+        System.out.print("Nome: ");
+        compra.setNome(leia.nextLine());
+        System.out.print("Quantidade: ");
+        compra.setQuantidade(leia.nextInt());
+        System.out.print("Preço: ");
+        compra.setPreco(leia.nextDouble());
+        System.out.println("\n"+compra.toString()+"\n");
+        
+        while (escolha != 3) {
+            System.out.print("\nEscolha se deseja adicionar ou retirar uma unidade do stock: \n"+"\n1 -- Adicionar"+"\n2 -- Retirar"+"\n3 -- sair\n"+"\nEscolha: ");
             escolha = leia.nextInt();
-            compra.escolha(escolha);
+
+            if(escolha == 1){
+                System.out.print("\nDigite a quantidade de produtos a adicionar: ");
+                ad = leia.nextInt();
+                compra.addQuantidadestock(ad);
+            }
+            if(escolha == 2){
+                System.out.print("\nDigite a quantidade de produtos a retirar: ");
+                sub = leia.nextInt();
+                compra.removeQuantidadeStock(sub);
+            }
+            if (escolha == 3) {
+                System.out.println("\nTchau!\n");
+                break;
+            }
+            System.out.println("\n"+compra.toString()+"\n");
+
+            if (escolha == 0 || escolha > 3){
+                System.out.println("\nOpção invalida!\n");
+            }
 
         }
 
 
 
+
+
+
+        leia.close();
     }
 }

@@ -1,14 +1,10 @@
 package entidades;
 
-import java.util.Scanner;
-
 public class Produto {
-    Scanner leia = new Scanner(System.in);
 
 
     private String nome;
     private double preco;
-
     private int quantidade;
 
     public String getNome() {
@@ -35,36 +31,24 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public void escolha(int escolha){
-        String nome;
-        int quantidade;
-        double preco;
-
-        if(escolha == 1){
-            System.out.println("Nome: ");
-            nome = leia.next();
-            this.nome = nome;
-        }
-        if (escolha == 2){
-            System.out.println("Preço: ");
-            preco = leia.nextDouble();
-            this.preco = preco;
-        }
-
-        if (escolha == 3){
-            System.out.println("Quantidade: ");
-            quantidade = leia.nextInt();
-            this.quantidade = quantidade;
-        }
-        if(escolha == 4){
-            System.out.println("OK");
-            escolha = 4;
-        }
-
+    public double totalValorStock (){
+        return preco * quantidade;
     }
-    public void totalValorStock (){}
 
-    public void addQuantidadestock(){}
+    public void addQuantidadestock(int ad){
+        this.quantidade += ad;
+    }
 
-    public void removeQuantidadeStock(){}
+    public void removeQuantidadeStock(int sub){
+        this.quantidade -= sub;
+    }
+    public String toString(){
+        return nome
+            + " - $"
+            + String.format("%.2f", preco)
+            + " - "
+            + quantidade
+            + " unidades. \nTotal: $ "
+            + String.format("%.2f", totalValorStock());
+    }
 }
