@@ -33,6 +33,7 @@ public class Funcionario {
         return lSalario;
     }
 
+    @Override
     public String toString(){
         return nome
             + " $"

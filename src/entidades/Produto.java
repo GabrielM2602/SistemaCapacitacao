@@ -42,6 +42,7 @@ public class Produto {
     public void removeQuantidadeStock(int sub){
         this.quantidade -= sub;
     }
+    @Override
     public String toString(){
         return nome
             + " - $"

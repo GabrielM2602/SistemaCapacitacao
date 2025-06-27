@@ -1,6 +1,8 @@
 package entidades;
 
 public class ServidorPublico {
+
+
     private int matricula;
     private String nome;
     private String foto;
@@ -30,6 +32,38 @@ public class ServidorPublico {
         this.nome = nome;
         this.cargo = cargo;
     }
+
+    public ServidorPublico(int matricula, String nome, String orgao, String cargo, String lotacao, String email, double salario) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.orgao = orgao;
+        this.cargo = cargo;
+        this.lotacao = lotacao;
+        this.email = email;
+        this.salario = salario;
+    }
+
+    public ServidorPublico(String cargo, String celular, String cpf, String email, String foto,
+     double horasExtras, int idade, String lotacao, int matricula, String nome, String orgao, double salario, String telefone, 
+     int tempoDeContribuicao, String vinculo) {
+        this.cargo = cargo;
+        this.celular = celular;
+        this.cpf = cpf;
+        this.email = email;
+        this.foto = foto;
+        this.horasExtras = horasExtras;
+        this.idade = idade;
+        this.lotacao = lotacao;
+        this.matricula = matricula;
+        this.nome = nome;
+        this.orgao = orgao;
+        this.salario = salario;
+        this.telefone = telefone;
+        this.tempoDeContribuicao = tempoDeContribuicao;
+        this.vinculo = vinculo;
+    }
+
+    
 
 
 
@@ -167,7 +201,13 @@ public class ServidorPublico {
             soma +=  numero;
         }
 
-        System.out.println("\n"+"A soma dos argumentos informados: "+soma);
+        System.out.println("A soma dos argumentos informados: "+soma);
         return soma;
+    }
+    
+    @Override
+    public String toString() {
+        return "ServidorPublico [matricula=" + matricula + ", nome=" + nome + ", orgao=" + orgao + ", salario="
+                + salario + ", cargo=" + cargo + ", lotacao=" + lotacao + "]";
     }
 }

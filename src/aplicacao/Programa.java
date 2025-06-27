@@ -1,78 +1,82 @@
 package aplicacao;
 
-import entidades.Produto;
-// import entidades.ServidorPublico;
-
-import java.util.Scanner;
+// import entidades.Curso;
+import entidades.ServidorPublico;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Programa {
-    public static void main(String[] args) {
-        Scanner leia = new Scanner(System.in);
-        int escolha = 0, ad, sub;
-//        ServidorPublico isabela = new ServidorPublico();
-//        isabela.setNome("Isabela");
-//        isabela.setCargo("Auditor");
-//        isabela.setOrgao("ANVISA");
-//        isabela.setLotacao("Brasilia");
-//        isabela.setEmail("isabela@gmail.");
-//        isabela.setNome("João");;
-//
-//        ServidorPublico joao = new ServidorPublico();
-//        ServidorPublico maria = new ServidorPublico(123, "Maria");
-//        System.out.println(maria.getNome());
-//        ServidorPublico jose = new ServidorPublico(4,"José","Médico");
-//        System.out.println(jose.getNome());
-//        System.out.println(jose.getCargo());
-//
-//
-//        isabela.calcularSalarioHorasExtras(10,5.60);
-//
-//        System.out.println("Servidor: "+ isabela.getNome());
-//        System.out.printf("Horas extras R$ %.2f: ",isabela.getHorasExtras());
-//        isabela.calcularNumeros(4,6,20,56);
 
-        Produto compra = new Produto();
+    static List<ServidorPublico> servidores = new ArrayList<>();
+    // static List<Curso> cursos = new ArrayList<>();
 
-        System.out.println("\nColoque os dados do produto: \n");
-        System.out.print("Nome: ");
-        compra.setNome(leia.nextLine());
-        System.out.print("Quantidade: ");
-        compra.setQuantidade(leia.nextInt());
-        System.out.print("Preço: ");
-        compra.setPreco(leia.nextDouble());
-        System.out.println("\n"+compra.toString()+"\n");
-        
-        while (escolha != 3) {
-            System.out.print("\nEscolha se deseja adicionar ou retirar uma unidade do stock: \n"+"\n1 -- Adicionar"+"\n2 -- Retirar"+"\n3 -- sair\n"+"\nEscolha: ");
-            escolha = leia.nextInt();
+        public static void adicionarServidorPublico(){
 
-            if(escolha == 1){
-                System.out.print("\nDigite a quantidade de produtos a adicionar: ");
-                ad = leia.nextInt();
-                compra.addQuantidadestock(ad);
+            int matricula = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a matrícula: "));
+            String nome = JOptionPane.showInputDialog("Informe o nome do servidor: ");
+            String orgao = JOptionPane.showInputDialog("Informe o orgão: ");
+            String cargo = JOptionPane.showInputDialog("Informe o cargo do servidor: ");
+            String lotacao = JOptionPane.showInputDialog("Informe a lotação do servidor: ");
+            String email= JOptionPane.showInputDialog("Informe o email do servidor: ");
+            double salario = Double.parseDouble(JOptionPane.showInputDialog("Informe o salário do servidor: "));
+
+            ServidorPublico servidor = new ServidorPublico(matricula, nome, orgao, cargo, lotacao, email, salario);
+
+            servidores.add(servidor);
+        }
+        public static void listaServidorPublico(){
+
+
+            for (ServidorPublico servidor : servidores) {
+                System.out.println(servidor);
+                
             }
-            if(escolha == 2){
-                System.out.print("\nDigite a quantidade de produtos a retirar: ");
-                sub = leia.nextInt();
-                compra.removeQuantidadeStock(sub);
-            }
-            if (escolha == 3) {
-                System.out.println("\nTchau!\n");
-                break;
-            }
-            System.out.println("\n"+compra.toString()+"\n");
+        }
+        public static void listarServidores(int matricula){
+            boolean encontrou = false;
 
-            if (escolha == 0 || escolha > 3){
-                System.out.println("\nOpção invalida!\n");
+            
+            for (ServidorPublico servidor : servidores) {
+                if( servidor.getMatricula() == matricula){
+                    encontrou = true;
+                    JOptionPane.showMessageDialog(null, "Encontrado!"+" Servidor: "+servidor.getNome());
+                    break;
+                }
             }
+            if(encontrou == false){
+                JOptionPane.showMessageDialog(null, "Servidor não encontrado! ");
+            }
+        }
+        public static void listarServidores(String nome){
+            boolean encontrou = false;
 
+            
+            for (ServidorPublico servidor : servidores) {
+                if( servidor.getNome().equals(nome)){
+                    encontrou = true;
+                    JOptionPane.showMessageDialog(null, "Encontrado!"+" Servidor: "+servidor.getNome());
+                    break;
+                }
+            }
+            if(encontrou == false){
+                JOptionPane.showMessageDialog(null, "Servidor não encontrado! ");
+            }
         }
 
+    public static void main(String[] args) {
+
+        adicionarServidorPublico();
+        adicionarServidorPublico();
+        listaServidorPublico();
+
+        int matricula = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a matrícula que deseja encontrar: "));
+        listarServidores(matricula);
+
+        String nome = JOptionPane.showInputDialog(null, "Digite o nome do servidor que deseja encontrar: ");
+        listarServidores(nome);
 
 
-
-
-
-        leia.close();
     }
 }
+
