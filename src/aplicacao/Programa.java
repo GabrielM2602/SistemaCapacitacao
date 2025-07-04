@@ -1,6 +1,5 @@
 package aplicacao;
 
-// import entidades.Curso;
 import entidades.ServidorPublico;
 import java.util.ArrayList;
 import java.util.List;
