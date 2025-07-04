@@ -1,55 +1,51 @@
+
 package entidades;
 
 public class Produto {
+    private String name;
+    private double price;
+    private int quantity;
 
-
-    private String nome;
-    private double preco;
-    private int quantidade;
-
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getPreco() {
-        return preco;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public double totalValorStock (){
-        return preco * quantidade;
+    public double totalValueInStock() {
+        return price * quantity;
     }
-
-    public void addQuantidadestock(int ad){
-        this.quantidade += ad;
+    public void addProducts(int quantity) {
+        this.quantity += quantity;
     }
-
-    public void removeQuantidadeStock(int sub){
-        this.quantidade -= sub;
+    public void removeProducts(int quantity) {
+        this.quantity -= quantity;
     }
-    @Override
-    public String toString(){
-        return nome
-            + " - $"
-            + String.format("%.2f", preco)
-            + " - "
-            + quantidade
-            + " unidades. \nTotal: $ "
-            + String.format("%.2f", totalValorStock());
+    public String toString() {
+        return name
+                + ", $ "
+                + String.format("%.2f", price)
+                + ", "
+                + quantity
+                + " units, Total: $ "
+                + String.format("%.2f", totalValueInStock());
     }
 }

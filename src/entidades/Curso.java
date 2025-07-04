@@ -1,25 +1,21 @@
-
 package entidades;
 
 public class Curso {
-    private int idcurso;
+    private int idCurso;
     private String nome;
-    private String foto;
-    private String formarealizacao;
+    private String formaRealizacao;
     private String ofertante;
     private int vagas;
     private double valor;
     private String site;
     private String situacao;
 
-    public Curso(){}
+    public Curso (){};
 
-    public Curso (int idcurso, String nome, String foto, String formarealizacao, String ofertante, int vagas,
-            double valor, String site, String situacao) {
-        this.idcurso = idcurso;
+    public Curso(int idCurso, String nome, String formaRealizacao, String ofertante, int vagas, double valor, String site, String situacao) {
+        this.idCurso = idCurso;
         this.nome = nome;
-        this.foto = foto;
-        this.formarealizacao = formarealizacao;
+        this.formaRealizacao = formaRealizacao;
         this.ofertante = ofertante;
         this.vagas = vagas;
         this.valor = valor;
@@ -27,12 +23,12 @@ public class Curso {
         this.situacao = situacao;
     }
 
-    public int getIdcurso() {
-        return idcurso;
+    public int getIdCurso() {
+        return idCurso;
     }
 
-    public void setIdcurso(int idcurso) {
-        this.idcurso = idcurso;
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
     }
 
     public String getNome() {
@@ -43,20 +39,12 @@ public class Curso {
         this.nome = nome;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getFormaRealizacao() {
+        return formaRealizacao;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
-    public String getFormarealizacao() {
-        return formarealizacao;
-    }
-
-    public void setFormarealizacao(String formarealizacao) {
-        this.formarealizacao = formarealizacao;
+    public void setFormaRealizacao(String formaRealizacao) {
+        this.formaRealizacao = formaRealizacao;
     }
 
     public String getOfertante() {
@@ -101,16 +89,15 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Curso"+ 
-        "idcurso=" + idcurso + 
-        ", nome=" + nome + 
-        ", foto=" + foto + 
-        ", formarealizacao="+ formarealizacao + 
-        ", ofertante=" + ofertante + 
-        ", vagas=" + vagas + 
-        ", valor=" + valor + 
-        ", site="+ site + 
-        ", situacao=" + situacao + "]";
+        return "Curso{" +
+                "idCurso=" + idCurso +
+                ", nome='" + nome + '\'' +
+                ", formaRealizacao='" + formaRealizacao + '\'' +
+                ", ofertante='" + ofertante + '\'' +
+                ", vagas=" + vagas +
+                ", valor=" + valor +
+                ", site='" + site + '\'' +
+                ", situacao='" + situacao + '\'' +
+                '}';
     }
-
 }

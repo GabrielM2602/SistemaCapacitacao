@@ -1,42 +1,54 @@
 package entidades;
 
 public class Funcionario {
-    private String nome;
-    private double salarioB;
-    private double taxa;
+    private String name;
+    private double grossSalary;
+    private double tax;
 
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public double getSalarioB() {
-        return salarioB;
-    }
-    public void setSalarioB(double salarioB) {
-        this.salarioB = salarioB;
-    }
-    public double getTaxa() {
-        return taxa;
-    }
-    public void setTaxa(double taxa) {
-        this.taxa = taxa;
+    public String getName() {
+        return name;
     }
 
-    public void nSalario(double porcentagem){
-        salarioB += salarioB * (porcentagem/100);
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double lSalario(){
-        double lSalario = salarioB - taxa;
-        return lSalario;
+    public double getGrossSalary() {
+        return grossSalary;
     }
 
-    @Override
-    public String toString(){
-        return nome
-            + " $"
-            + String.format("%.2f", lSalario());
+    public void setGrossSalary(double grossSalary) {
+        this.grossSalary = grossSalary;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    public double netSalary(){
+        double netSalary  = grossSalary - tax;
+        return netSalary;
+    }
+
+    public void increaseSalary (double porcentage){
+        grossSalary += grossSalary * (porcentage/100);
+    }
+
+    public String toString() {
+        return name
+                + ", $ "
+                + String.format("%.2f .", netSalary());
+
+    }
+
+
+
+    public static void felizAniversário(Funcionario fun){
+
+        System.out.println("Feliz aniversário "+fun.getName());
     }
 }

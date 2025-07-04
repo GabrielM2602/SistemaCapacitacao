@@ -1,8 +1,11 @@
+
 package entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
+
 public class ServidorPublico {
-
-
     private int matricula;
     private String nome;
     private String foto;
@@ -19,10 +22,9 @@ public class ServidorPublico {
     private String email;
     private double horasExtras;
 
+    public ServidorPublico(){};
 
-    public ServidorPublico(){}
-
-    public ServidorPublico(int matricula, String nome){
+    public ServidorPublico(int matricula, String nome) {
         this.matricula = matricula;
         this.nome = nome;
     }
@@ -43,29 +45,23 @@ public class ServidorPublico {
         this.salario = salario;
     }
 
-    public ServidorPublico(String cargo, String celular, String cpf, String email, String foto,
-     double horasExtras, int idade, String lotacao, int matricula, String nome, String orgao, double salario, String telefone, 
-     int tempoDeContribuicao, String vinculo) {
-        this.cargo = cargo;
-        this.celular = celular;
-        this.cpf = cpf;
-        this.email = email;
-        this.foto = foto;
-        this.horasExtras = horasExtras;
-        this.idade = idade;
-        this.lotacao = lotacao;
+    public ServidorPublico(int matricula, String nome, String foto, String orgao, String vinculo, double salario, int idade, int tempoDeContribuicao, String cargo, String telefone, String celular, String cpf, String lotacao, String email, double horasExtras) {
         this.matricula = matricula;
         this.nome = nome;
+        this.foto = foto;
         this.orgao = orgao;
-        this.salario = salario;
-        this.telefone = telefone;
-        this.tempoDeContribuicao = tempoDeContribuicao;
         this.vinculo = vinculo;
+        this.salario = salario;
+        this.idade = idade;
+        this.tempoDeContribuicao = tempoDeContribuicao;
+        this.cargo = cargo;
+        this.telefone = telefone;
+        this.celular = celular;
+        this.cpf = cpf;
+        this.lotacao = lotacao;
+        this.email = email;
+        this.horasExtras = horasExtras;
     }
-
-    
-
-
 
     public double getHorasExtras() {
         return horasExtras;
@@ -201,13 +197,86 @@ public class ServidorPublico {
             soma +=  numero;
         }
 
-        System.out.println("A soma dos argumentos informados: "+soma);
+        System.out.println("A soma dos argumentos informaados "+ soma);
         return soma;
     }
-    
+        //Lista de Serivdores
+        List<ServidorPublico> servidores = new ArrayList<>();
+        //Lista de Cursos
+        List<Curso> cursos = new ArrayList<>();
+
+    /**
+     * Método que adiciona o servidor instaciado na nossa lista de Servidores
+     *
+     */
+
+    public void adicionarServidorPublico() {
+
+        int matricula = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a Matrícula do Servidor"));
+        String nome = JOptionPane.showInputDialog(null, "Informe o nome do Servidor");
+        String orgao = JOptionPane.showInputDialog(null, "Informe o Órgão");
+        String cargo = JOptionPane.showInputDialog(null, "Informe o cargo do Servidor");
+        String lotacao = JOptionPane.showInputDialog(null, "Informe lotação do Servidor");
+        String email = JOptionPane.showInputDialog(null, "Informe o email do Servidor");
+        double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o salário do Servidor"));
+
+        ServidorPublico servidor = new ServidorPublico(matricula, nome, orgao, cargo, lotacao, email, salario);
+
+        servidores.add(servidor);
+
+
+    };
+
+    /**
+     * Método que lista todos nossos servidores adicionados na lista de Servidores
+     */
+
+
+
+    public void listarServidores(){
+        for (ServidorPublico servidor : servidores){
+            JOptionPane.showMessageDialog(null, servidor);
+        }
+    }
+
+    public void listarServidores( int matricula){
+        boolean encontrou = false;
+        for (ServidorPublico servidor : servidores){
+            if (servidor.getMatricula() == matricula){
+                JOptionPane.showMessageDialog(null, servidor);
+                encontrou = true;
+                break;
+            }
+        }
+        if (encontrou == false){
+            JOptionPane.showMessageDialog(null, "Servidor não encontrado!!!");
+        }
+    };
+
+    public void excluirServidores( int matricula){
+        boolean encontrou = false;
+        for (ServidorPublico servidor : servidores){
+            if (servidor.getMatricula() == matricula){
+                servidores.remove(servidor);
+                encontrou = true;
+                JOptionPane.showMessageDialog(null, "Servidor excluido com sucesso");
+                break;
+            }
+        }
+        if (encontrou == false){
+            JOptionPane.showMessageDialog(null, "Servidor não encontrado!!!");
+        }
+    };
+
     @Override
     public String toString() {
-        return "ServidorPublico [matricula=" + matricula + ", nome=" + nome + ", orgao=" + orgao + ", salario="
-                + salario + ", cargo=" + cargo + ", lotacao=" + lotacao + "]";
+        return """
+               ServidorPublico
+               matricula=""" + matricula +
+                ", \nnome='" + nome + '\'' +
+                ", \norgao='" + orgao + '\'' +
+                ", \nsalario=" + salario +
+                ", \ncargo='" + cargo + '\'' +
+                ", \nlotacao='" + lotacao + '\'';
     }
 }
